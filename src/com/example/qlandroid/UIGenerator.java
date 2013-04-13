@@ -63,15 +63,20 @@ public class UIGenerator implements IElementVisitor{
 	@Override
 	public void visit(Question question) {
 		initVar(question);
-		TextRow row = new TextRow(context);
+		InputRowFactory factory = new InputRowFactory(); 
+		QLRow row = factory.createRow(context, question.getType());
 		row.setSettings(question, runTimeValues, varUpdater);
 		questionRows.add(row);
-		
 	}
+	
 	@Override
-	public void visit(ComputedQuestion arg0) {
-		// TODO Auto-generated method stub
-		
+	public void visit(ComputedQuestion question) {
+		initVar(question);
+		ComputedRowFactory factory = new ComputedRowFactory();
+		QLRow row = factory.createRow(context);
+		row.setSettings(question, runTimeValues, varUpdater);
+		questionRows.add(row);
+
 	}
 	@Override
 	public void visit(IfThenElse arg0) {

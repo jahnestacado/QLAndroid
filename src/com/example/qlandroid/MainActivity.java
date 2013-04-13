@@ -1,29 +1,23 @@
 package com.example.qlandroid;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.uva.sea.ql.ast.form.Form;
 import org.uva.sea.ql.ast.types.Type;
-import org.uva.sea.ql.gui.qlform.interpreter.VariableUpdater;
 import org.uva.sea.ql.parser.antlr.ANTLRParser;
 import org.uva.sea.ql.parser.test.ParseError;
 import org.uva.sea.ql.visitor.checkers.ElementChecker;
 import org.uva.sea.ql.visitor.checkers.error.QLErrorMsg;
-import org.uva.sea.ql.visitor.evaluator.values.Value;
 
 import android.app.Activity;
-import android.app.ActionBar.Tab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TableRow;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
@@ -39,16 +33,15 @@ public class MainActivity extends Activity implements OnClickListener {
 		runButton.setOnClickListener(this);
 
 		editor = (EditText) findViewById(R.id.editText1);
-		editor.setText("form Android{ " + "q1 : \"elalalal\" int  " + '\n'
-				+ "q3 : \"Nikitis\" int  " + '\n' + "q2 : \"Nikitis\" int  "
-				+ '\n' + "q5 : \"Nikitis\" int  " + '\n'
-				+ "q6 : \"Nikitis\" int  " + '\n' + "q0 : \"Nikitis\" int  "
-				+ '\n' + "q8 : \"Nikitis\" int  " + '\n'
-				+ "qg : \"Nikitis\" int  " + '\n' + "qd : \"Nikitis\" int  "
+		editor.setText("form Android{ " + "q1 : \"int input\" int  " + '\n'
+				+ "q3 : \"int computed\" int ((q1 * 10) + 20)  " + '\n' + "q2 : \"input money\" money  "
+				+ '\n' + "q5 : \"money computed\" money (q2 - 30.0 + 100.0)  " + '\n'
+				+ "q6 : \"input string\" string  " + '\n' + "q0 : \"string computed\" string (q6)  "
+				+ '\n' + "q8 : \"input boolean\" boolean  " + '\n'
+				+ "qg : \"boolean computed\" boolean ((q8 && true) || false)  " + '\n' + "qd : \"Nikitis\" int  "
 				+ '\n' + "qid : \"Nikitis\" int  " + '\n'
 				+ "qs : \"Nikitis\" int  " + '\n' + "q3a : \"Nikitis\" int  "
 				+ '\n' + "}");
-
 	}
 
 	@Override
@@ -58,13 +51,14 @@ public class MainActivity extends Activity implements OnClickListener {
 			return;
 		Form parsedForm = getParsedForm(sourceCode);
 		form = parsedForm;
+		// Should catch exception for parse Error*****
 		ElementChecker checker = new ElementChecker(
 				new LinkedHashMap<String, Type>(), new ArrayList<QLErrorMsg>());
 		if (checker.check(parsedForm)) {
 			startActivity(new Intent(
 					"com.example.qlandroid.QuestionaireActivity"));
 		} else {
-			Toast.makeText(getApplicationContext(), "FAILLED",
+			Toast.makeText(getApplicationContext(), "FAILED",
 					Toast.LENGTH_LONG).show();
 
 		}
