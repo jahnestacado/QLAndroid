@@ -8,12 +8,10 @@ import org.uva.sea.ql.visitor.evaluator.values.BoolValue;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
 
 import android.content.Context;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 public class CheckBoxRow extends QLRow implements OnCheckedChangeListener {
@@ -38,10 +36,7 @@ public class CheckBoxRow extends QLRow implements OnCheckedChangeListener {
 		varName = qlElement.getId().getName();
 		this.runTimeValues= runTimeValues;
 		this.varUpdater = varUpdater;
-		checkbox.setOnCheckedChangeListener(this);
-		
-		checkbox.setGravity(Gravity.CENTER_HORIZONTAL);
-		
+		checkbox.setOnCheckedChangeListener(this);		
 
 		this.addView(label);
 		this.addView(dummyView);

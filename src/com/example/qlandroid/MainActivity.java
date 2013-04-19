@@ -36,8 +36,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		editor.setText("form Android{ " + 	 "qb: \"result input\" boolean  " + '\n'
 		+"if(qb){ q2: \"result input\" boolean  "+ '\n'
 		+ "q3: \"result input\" int  "+ '\n'+"  }"
-		+ "q8: \"result input\" boolean (q2) "
-		+ "q543: \"result input\" int  "
+		+ "else{q8: \"elsehh\" boolean (q2) "
+		+ "q543: \"result input\" int } "
 		+ "q8j: \"result input\" money  "
 		+  "}");
 	}

@@ -12,28 +12,24 @@ import org.uva.sea.ql.visitor.evaluator.values.BoolValue;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.TableLayout;
 
 public class IfThenBody extends TableLayout implements Observer, IQLRow{
 	
-	private List<View> rows;
+	private List<IQLRow> rows;
 	private  Map<String,Value> runTimeValues;
 	private  VariableUpdater varUpdater;
-	private  Expr condition;
+	Expr condition;
 	
 
 	public IfThenBody(Context context) {
 		super(context);
 		this.setColumnStretchable(0, true);
-		
 	}
 	
 	
-	
-	public void setSettings(List<View> questionRows,Expr condition,VariableUpdater varUpdater,Map<String,Value> runTimeValues){
+	public void setSettings(List<IQLRow> questionRows,Expr condition,VariableUpdater varUpdater,Map<String,Value> runTimeValues){
 		this.rows = questionRows;
 		this.condition = condition;
 		this.varUpdater = varUpdater;
@@ -44,8 +40,8 @@ public class IfThenBody extends TableLayout implements Observer, IQLRow{
 	}
 
 	private void fillRows(){
-		for(View row : rows){
-			this.addView(row);
+		for(IQLRow row : rows){
+			this.addView(row.getElement());
 		}
 	}
 
@@ -55,7 +51,7 @@ public class IfThenBody extends TableLayout implements Observer, IQLRow{
 		setVisibility(runTimeValues);		
 	}
 	
-	private void setVisibility(Map<String,Value> runTimeValues){
+	protected void setVisibility(Map<String,Value> runTimeValues){
 		boolean isVisible=((BoolValue) ExprEvaluator.eval(condition, runTimeValues)).getValue();
 		if(isVisible){
 		this.setVisibility(VISIBLE);

@@ -23,18 +23,15 @@ import org.uva.sea.ql.visitor.evaluator.values.StrValue;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
 
 import android.content.Context;
-import android.view.View;
-import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 
 public class UIGenerator implements IElementVisitor{
-	private final List<View> questionRows;
+	private final List<IQLRow> questionRows;
 	private final VariableUpdater varUpdater;
 	private final Map<String,Value> runTimeValues;
 	private final Context context;
 	
-	public UIGenerator(List<View> questionRows, VariableUpdater varUpdater, Map<String,Value> runTimeValues, Context context ){
+	public UIGenerator(List<IQLRow> questionRows, VariableUpdater varUpdater, Map<String,Value> runTimeValues, Context context ){
 		this.questionRows=questionRows;
 		this.runTimeValues=runTimeValues;
 		this.varUpdater=varUpdater;
@@ -84,18 +81,29 @@ public class UIGenerator implements IElementVisitor{
 
 	}
 	@Override
-	public void visit(IfThenElse arg0) {
-		// TODO Auto-generated method stub
+	public void visit(IfThenElse element) {
+		Body body = element.getIfBody();
+		Expr condition = element.getCondition();
+	    List<IQLRow> ifBodyrows =getConditionalBodyElements(body);
+	    IfThenBody ifThenBody = new IfThenBody(context);
+	    ifThenBody.setSettings(ifBodyrows, condition, varUpdater, runTimeValues);
+		questionRows.add(ifThenBody);
+		
+		body = element.getElseBody();
+	    List<IQLRow> elseBodyRows =getConditionalBodyElements(body);
+	    ElseBody elseBody = new ElseBody(context);
+	    elseBody.setSettings(elseBodyRows, condition, varUpdater, runTimeValues);
+		questionRows.add(elseBody);
 		
 	}
 	@Override
 	public void visit(IfThen element) {
 		Body body = element.getIfBody();
 		Expr condition = element.getCondition();
-	    List<View> rows =getConditionalBodyElements(body);
-	    IfThenBody conditionalBody = new IfThenBody(context);
-	    conditionalBody.setSettings(rows, condition, varUpdater, runTimeValues);
-		questionRows.add(conditionalBody);
+	    List<IQLRow> rows =getConditionalBodyElements(body);
+	    IfThenBody ifThenBody = new IfThenBody(context);
+	    ifThenBody.setSettings(rows, condition, varUpdater, runTimeValues);
+		questionRows.add(ifThenBody);
 	    
 	}
 	
@@ -103,12 +111,9 @@ public class UIGenerator implements IElementVisitor{
 		body.accept(this);
 	}
 	
-	private List<View> getConditionalBodyElements(Body qlElement){
-		//List<View> bodyRows=new ArrayList<View>();
-		UIGenerator conditionalBodyGeneration = new UIGenerator(new ArrayList<View>(), varUpdater, runTimeValues, context);
+	private List<IQLRow> getConditionalBodyElements(Body qlElement){
+		UIGenerator conditionalBodyGeneration = new UIGenerator(new ArrayList<IQLRow>(), varUpdater, runTimeValues, context);
 		conditionalBodyGeneration.fill(qlElement);
-		//bodyRows=conditionalBodyGeneration.getQuestionRows();
-		//return bodyRows;
 		return conditionalBodyGeneration.getQuestionRows();
 		
 	}
@@ -139,7 +144,7 @@ public class UIGenerator implements IElementVisitor{
 
 	}
 	
-	public List<View> getQuestionRows(){
+	public List<IQLRow> getQuestionRows(){
 		return questionRows;
 	}
 

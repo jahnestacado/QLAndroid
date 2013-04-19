@@ -15,7 +15,6 @@ import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 public class ComputedRow extends QLRow implements Observer{
