@@ -9,7 +9,7 @@ import org.uva.sea.ql.visitor.evaluator.values.Value;
 import android.content.Context;
 import android.widget.TableRow;
 
-public abstract class QLRow extends TableRow {
+public abstract class QLRow extends TableRow implements IQLRow{
 
 	public QLRow(Context context) {
 		super(context);

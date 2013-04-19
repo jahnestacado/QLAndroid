@@ -33,6 +33,8 @@ public class IntegerRow extends QLRow implements OnClickListener, TextWatcher{
 		button.setOnClickListener(this);
 		button.setText("OK");
 		input.addTextChangedListener(this);
+		//this.setBackgroundResource(R.layout.line);
+		this.setLayoutParams(RowMargin.getMargin());
 	}
 	
 	@Override
@@ -44,7 +46,7 @@ public class IntegerRow extends QLRow implements OnClickListener, TextWatcher{
 		this.addView(label);
 		this.addView(input);
 		this.addView(button);
-		input.setMinimumWidth(100);
+		input.setMinimumWidth(200);
 	}
 	
 	
@@ -80,5 +82,20 @@ public class IntegerRow extends QLRow implements OnClickListener, TextWatcher{
 		/*
 		 * Is not beign used 
 		 */		
+	}
+
+	@Override
+	public boolean isRow() {
+		return true;
+	}
+
+	@Override
+	public boolean isBody() {
+		return false;
+	}
+
+	@Override
+	public View getElement() {
+		return this;
 	}
 }

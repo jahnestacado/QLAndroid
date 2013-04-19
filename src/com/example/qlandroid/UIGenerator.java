@@ -1,8 +1,10 @@
 package com.example.qlandroid;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.uva.sea.ql.ast.expr.Expr;
 import org.uva.sea.ql.ast.form.Body;
 import org.uva.sea.ql.ast.form.BodyElement;
 import org.uva.sea.ql.ast.form.ComputedQuestion;
@@ -21,15 +23,18 @@ import org.uva.sea.ql.visitor.evaluator.values.StrValue;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
 
 import android.content.Context;
+import android.view.View;
+import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 public class UIGenerator implements IElementVisitor{
-	private final List<TableRow> questionRows;
+	private final List<View> questionRows;
 	private final VariableUpdater varUpdater;
 	private final Map<String,Value> runTimeValues;
 	private final Context context;
 	
-	public UIGenerator(List<TableRow> questionRows, VariableUpdater varUpdater, Map<String,Value> runTimeValues, Context context ){
+	public UIGenerator(List<View> questionRows, VariableUpdater varUpdater, Map<String,Value> runTimeValues, Context context ){
 		this.questionRows=questionRows;
 		this.runTimeValues=runTimeValues;
 		this.varUpdater=varUpdater;
@@ -84,8 +89,27 @@ public class UIGenerator implements IElementVisitor{
 		
 	}
 	@Override
-	public void visit(IfThen arg0) {
-		// TODO Auto-generated method stub
+	public void visit(IfThen element) {
+		Body body = element.getIfBody();
+		Expr condition = element.getCondition();
+	    List<View> rows =getConditionalBodyElements(body);
+	    IfThenBody conditionalBody = new IfThenBody(context);
+	    conditionalBody.setSettings(rows, condition, varUpdater, runTimeValues);
+		questionRows.add(conditionalBody);
+	    
+	}
+	
+	private void fill(Body body){
+		body.accept(this);
+	}
+	
+	private List<View> getConditionalBodyElements(Body qlElement){
+		//List<View> bodyRows=new ArrayList<View>();
+		UIGenerator conditionalBodyGeneration = new UIGenerator(new ArrayList<View>(), varUpdater, runTimeValues, context);
+		conditionalBodyGeneration.fill(qlElement);
+		//bodyRows=conditionalBodyGeneration.getQuestionRows();
+		//return bodyRows;
+		return conditionalBodyGeneration.getQuestionRows();
 		
 	}
 	
@@ -115,7 +139,7 @@ public class UIGenerator implements IElementVisitor{
 
 	}
 	
-	public List<TableRow> getQuestionRows(){
+	public List<View> getQuestionRows(){
 		return questionRows;
 	}
 

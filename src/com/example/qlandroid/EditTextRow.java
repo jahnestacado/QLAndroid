@@ -33,6 +33,8 @@ public class EditTextRow extends QLRow implements OnClickListener, TextWatcher {
 		button.setOnClickListener(this);
 		button.setText("OK");
 		input.addTextChangedListener(this);
+		this.setBackgroundResource(R.layout.line);
+		this.setLayoutParams(RowMargin.getMargin());
 	}
 
 	@Override
@@ -80,6 +82,21 @@ public class EditTextRow extends QLRow implements OnClickListener, TextWatcher {
 		/*
 		 * Is not beign used
 		 */
+	}
+
+	@Override
+	public boolean isRow() {
+		return true;
+	}
+
+	@Override
+	public boolean isBody() {
+		return false;
+	}
+
+	@Override
+	public View getElement() {
+		return this;
 	}
 
 }

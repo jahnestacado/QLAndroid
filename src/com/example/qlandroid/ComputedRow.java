@@ -12,12 +12,16 @@ import org.uva.sea.ql.visitor.evaluator.ExprEvaluator;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
 
 import android.content.Context;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 public class ComputedRow extends QLRow implements Observer{
 
 	private final TextView label;
+	private final TextView dummyView;
 	private final EditText input;
 	private Expr expr;
 	private String varName;
@@ -27,6 +31,12 @@ public class ComputedRow extends QLRow implements Observer{
 		super(context);
 		label = new TextView(context);
 		input = new EditText(context);
+		dummyView = new TextView(context);
+		dummyView.setVisibility(INVISIBLE);
+		//this.setBackgroundResource(R.layout.line);
+		this.setLayoutParams(RowMargin.getMargin());
+		input.setEnabled(false);
+		input.setGravity(Gravity.CENTER);
 	}
 	
 	
@@ -50,9 +60,38 @@ public class ComputedRow extends QLRow implements Observer{
 		varName = qlElement.getId().getName();
 		this.varUpdater = varUpdater;
 		varUpdater.addObserver(this);
+		input.setMinimumWidth(100);
+		dummyView.setMinWidth(50);
+		
+			
+
 		this.addView(label);
 		this.addView(input);
+		this.addView(dummyView);
 		
 	}
+
+
+
+	@Override
+	public boolean isRow() {
+		return true;
+	}
+
+
+
+	@Override
+	public boolean isBody() {
+		return false;
+	}
+
+
+
+	@Override
+	public View getElement() {
+		return this;
+	}
+	
+	
 
 }

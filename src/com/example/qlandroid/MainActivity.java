@@ -33,15 +33,13 @@ public class MainActivity extends Activity implements OnClickListener {
 		runButton.setOnClickListener(this);
 
 		editor = (EditText) findViewById(R.id.editText1);
-		editor.setText("form Android{ " + "q1 : \"int input\" int  " + '\n'
-				+ "q3 : \"int computed\" int ((q1 * 10) + 20)  " + '\n' + "q2 : \"input money\" money  "
-				+ '\n' + "q5 : \"money computed\" money (q2 - 30.0 + 100.0)  " + '\n'
-				+ "q6 : \"input string\" string  " + '\n' + "q0 : \"string computed\" string (q6)  "
-				+ '\n' + "q8 : \"input boolean\" boolean  " + '\n'
-				+ "qg : \"boolean computed\" boolean ((q8 && true) || false)  " + '\n' + "qd : \"Nikitis\" int  "
-				+ '\n' + "qid : \"Nikitis\" int  " + '\n'
-				+ "qs : \"Nikitis\" int  " + '\n' + "q3a : \"Nikitis\" int  "
-				+ '\n' + "}");
+		editor.setText("form Android{ " + 	 "qb: \"result input\" boolean  " + '\n'
+		+"if(qb){ q2: \"result input\" boolean  "+ '\n'
+		+ "q3: \"result input\" int  "+ '\n'+"  }"
+		+ "q8: \"result input\" boolean (q2) "
+		+ "q543: \"result input\" int  "
+		+ "q8j: \"result input\" money  "
+		+  "}");
 	}
 
 	@Override
