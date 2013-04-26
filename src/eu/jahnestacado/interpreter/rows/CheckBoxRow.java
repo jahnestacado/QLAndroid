@@ -3,12 +3,8 @@ package eu.jahnestacado.interpreter.rows;
 import java.util.Map;
 
 import org.uva.sea.ql.ast.form.Question;
-import org.uva.sea.ql.gui.qlform.interpreter.VariableUpdater;
 import org.uva.sea.ql.visitor.evaluator.values.BoolValue;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
-
-import eu.jahnestacado.interpreter.SingleRow;
-
 
 import android.content.Context;
 import android.view.View;
@@ -16,6 +12,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+import eu.jahnestacado.interpreter.SingleRow;
+import eu.jahnestacado.interpreter.VariableUpdater;
 
 public class CheckBoxRow extends Row implements OnCheckedChangeListener, SingleRow {
 	private final TextView label;

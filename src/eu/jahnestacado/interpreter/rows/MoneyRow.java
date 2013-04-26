@@ -3,13 +3,8 @@ package eu.jahnestacado.interpreter.rows;
 import java.util.Map;
 
 import org.uva.sea.ql.ast.form.Question;
-import org.uva.sea.ql.gui.qlform.interpreter.VariableUpdater;
 import org.uva.sea.ql.visitor.evaluator.values.DecValue;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
-
-import eu.jahnestacado.interpreter.InputValidator;
-import eu.jahnestacado.interpreter.RowMargin;
-import eu.jahnestacado.interpreter.SingleRow;
 
 import android.content.Context;
 import android.text.Editable;
@@ -19,6 +14,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import eu.jahnestacado.interpreter.InputValidator;
+import eu.jahnestacado.interpreter.RowMargin;
+import eu.jahnestacado.interpreter.SingleRow;
+import eu.jahnestacado.interpreter.VariableUpdater;
 
 public class MoneyRow extends Row implements OnClickListener, TextWatcher, SingleRow{
 	private final TextView label;

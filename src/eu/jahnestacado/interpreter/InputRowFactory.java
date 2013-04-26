@@ -2,13 +2,12 @@ package eu.jahnestacado.interpreter;
 
 import org.uva.sea.ql.ast.types.Type;
 
+import android.content.Context;
 import eu.jahnestacado.interpreter.rows.CheckBoxRow;
 import eu.jahnestacado.interpreter.rows.EditTextRow;
 import eu.jahnestacado.interpreter.rows.IntegerRow;
 import eu.jahnestacado.interpreter.rows.MoneyRow;
 import eu.jahnestacado.interpreter.rows.Row;
-
-import android.content.Context;
 
 public class InputRowFactory extends RowFactory {
 

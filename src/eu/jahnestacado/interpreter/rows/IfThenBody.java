@@ -6,16 +6,15 @@ import java.util.Observable;
 import java.util.Observer;
 
 import org.uva.sea.ql.ast.expr.Expr;
-import org.uva.sea.ql.gui.qlform.interpreter.VariableUpdater;
 import org.uva.sea.ql.visitor.evaluator.ExprEvaluator;
 import org.uva.sea.ql.visitor.evaluator.values.BoolValue;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
 
-import eu.jahnestacado.interpreter.ConditionalBodyRow;
-
 import android.content.Context;
 import android.view.View;
 import android.widget.TableLayout;
+import eu.jahnestacado.interpreter.ConditionalBodyRow;
+import eu.jahnestacado.interpreter.VariableUpdater;
 
 public class IfThenBody extends TableLayout implements Observer, IQLRow, ConditionalBodyRow{
 	

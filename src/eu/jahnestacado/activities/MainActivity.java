@@ -11,8 +11,6 @@ import org.uva.sea.ql.parser.test.ParseError;
 import org.uva.sea.ql.visitor.checkers.ElementChecker;
 import org.uva.sea.ql.visitor.checkers.error.QLErrorMsg;
 
-import com.example.qlandroid.R;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +19,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.qlandroid.R;
 
 public class MainActivity extends Activity implements OnClickListener {
 	private Button runButton;

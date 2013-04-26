@@ -14,7 +14,6 @@ import org.uva.sea.ql.ast.form.IfThenElse;
 import org.uva.sea.ql.ast.form.Question;
 import org.uva.sea.ql.ast.form.SingleLineElement;
 import org.uva.sea.ql.ast.types.Type;
-import org.uva.sea.ql.gui.qlform.interpreter.VariableUpdater;
 import org.uva.sea.ql.visitor.IElementVisitor;
 import org.uva.sea.ql.visitor.evaluator.values.BoolValue;
 import org.uva.sea.ql.visitor.evaluator.values.DecValue;
@@ -22,13 +21,12 @@ import org.uva.sea.ql.visitor.evaluator.values.IntValue;
 import org.uva.sea.ql.visitor.evaluator.values.StrValue;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
 
+import android.content.Context;
+import android.widget.TableRow;
 import eu.jahnestacado.interpreter.rows.ElseBody;
 import eu.jahnestacado.interpreter.rows.IQLRow;
 import eu.jahnestacado.interpreter.rows.IfThenBody;
 import eu.jahnestacado.interpreter.rows.Row;
-
-import android.content.Context;
-import android.widget.TableRow;
 
 public class UIGenerator implements IElementVisitor{
 	private final List<IQLRow> questionRows;

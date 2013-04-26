@@ -4,8 +4,8 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry kind="lib" path="libs/QL.jar"/>
-	<classpathentry kind="lib" path="libs/antlr-3.4-complete-no-antlrv2.jar"/>
-	<classpathentry kind="lib" path="libs/itextpdf-5.3.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/antlr-3.4-complete-no-antlrv2.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/itextpdf-5.3.5.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

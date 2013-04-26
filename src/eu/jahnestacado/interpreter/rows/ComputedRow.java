@@ -7,18 +7,17 @@ import java.util.Observer;
 import org.uva.sea.ql.ast.expr.Expr;
 import org.uva.sea.ql.ast.form.ComputedQuestion;
 import org.uva.sea.ql.ast.form.Question;
-import org.uva.sea.ql.gui.qlform.interpreter.VariableUpdater;
 import org.uva.sea.ql.visitor.evaluator.ExprEvaluator;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
-
-import eu.jahnestacado.interpreter.RowMargin;
-import eu.jahnestacado.interpreter.SingleRow;
 
 import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import eu.jahnestacado.interpreter.RowMargin;
+import eu.jahnestacado.interpreter.SingleRow;
+import eu.jahnestacado.interpreter.VariableUpdater;
 
 public class ComputedRow extends Row implements Observer, SingleRow{
 

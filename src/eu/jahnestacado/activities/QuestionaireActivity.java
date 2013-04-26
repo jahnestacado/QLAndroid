@@ -8,7 +8,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.uva.sea.ql.gui.qlform.interpreter.VariableUpdater;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
 
 import android.app.Activity;
@@ -24,6 +23,7 @@ import com.example.qlandroid.R;
 import com.itextpdf.text.DocumentException;
 
 import eu.jahnestacado.interpreter.UIGenerator;
+import eu.jahnestacado.interpreter.VariableUpdater;
 import eu.jahnestacado.interpreter.rows.IQLRow;
 import eu.jahnestacado.output.pdfgenerator.OutputState;
 import eu.jahnestacado.output.pdfgenerator.QLToPDF;

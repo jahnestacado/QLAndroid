@@ -3,14 +3,8 @@ package eu.jahnestacado.interpreter.rows;
 import java.util.Map;
 
 import org.uva.sea.ql.ast.form.Question;
-import org.uva.sea.ql.gui.qlform.interpreter.VariableUpdater;
 import org.uva.sea.ql.visitor.evaluator.values.StrValue;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
-
-import com.example.qlandroid.R;
-
-import eu.jahnestacado.interpreter.InputValidator;
-import eu.jahnestacado.interpreter.RowMargin;
 
 import android.content.Context;
 import android.text.Editable;
@@ -20,6 +14,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.qlandroid.R;
+
+import eu.jahnestacado.interpreter.InputValidator;
+import eu.jahnestacado.interpreter.RowMargin;
+import eu.jahnestacado.interpreter.VariableUpdater;
 
 public class EditTextRow extends Row implements OnClickListener, TextWatcher {
 	private final TextView label;
