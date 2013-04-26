@@ -4,6 +4,7 @@ import org.uva.sea.ql.ast.expr.Ident;
 import org.uva.sea.ql.ast.expr.values.StringLit;
 import org.uva.sea.ql.ast.types.Type;
 
+@SuppressWarnings("serial")
 public abstract class SingleLineElement extends BodyElement {
 	private final Ident id;
 	private final StringLit label;

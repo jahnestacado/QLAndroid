@@ -7,6 +7,7 @@ import org.uva.sea.ql.ast.types.BoolType;
 import org.uva.sea.ql.ast.types.Type;
 import org.uva.sea.ql.visitor.IExprVisitor;
 
+@SuppressWarnings("serial")
 public class Not extends Unary {
 
 	public Not(Expr leftExpr) {
@@ -16,9 +17,9 @@ public class Not extends Unary {
 	@Override
 	public <T> T accept(IExprVisitor<T> nodeVisitor) {
 		return nodeVisitor.visit(this);
-		
+
 	}
-	
+
 	@Override
 	public Type getExprType(Map<String, Type> typeEnv) {
 		return new BoolType();

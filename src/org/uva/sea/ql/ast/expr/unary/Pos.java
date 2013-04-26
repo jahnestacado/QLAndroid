@@ -7,22 +7,22 @@ import org.uva.sea.ql.ast.types.NumericType;
 import org.uva.sea.ql.ast.types.Type;
 import org.uva.sea.ql.visitor.IExprVisitor;
 
+@SuppressWarnings("serial")
 public class Pos extends Unary {
 
-	public Pos (Expr leftExpr){
+	public Pos(Expr leftExpr) {
 		super(leftExpr);
 	}
 
 	@Override
 	public <T> T accept(IExprVisitor<T> nodeVisitor) {
 		return nodeVisitor.visit(this);
-		
+
 	}
 
 	@Override
 	public Type getExprType(Map<String, Type> typeEnv) {
 		return new NumericType();
 	}
-	
-	
+
 }

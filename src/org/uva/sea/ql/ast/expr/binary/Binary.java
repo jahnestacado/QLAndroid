@@ -4,6 +4,7 @@ import org.uva.sea.ql.ast.expr.Expr;
 
 
 
+@SuppressWarnings("serial")
 public abstract class Binary extends Expr {
 
 	private final Expr leftExpr;

@@ -7,18 +7,19 @@ import org.uva.sea.ql.ast.types.BoolType;
 import org.uva.sea.ql.ast.types.Type;
 import org.uva.sea.ql.visitor.IExprVisitor;
 
+@SuppressWarnings("serial")
 public class LT extends Bool {
 
 	public LT(Expr leftExpr, Expr rightExpr) {
-		super(leftExpr,rightExpr) ;
+		super(leftExpr, rightExpr);
 	}
 
 	@Override
 	public <T> T accept(IExprVisitor<T> nodeVisitor) {
 		return nodeVisitor.visit(this);
-		
+
 	}
-	
+
 	@Override
 	public Type getExprType(Map<String, Type> typeEnv) {
 		return new BoolType();

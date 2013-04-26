@@ -1,5 +1,8 @@
 package org.uva.sea.ql.ast;
 
-public abstract class ASTNode {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public abstract class ASTNode implements Serializable {
 
 }

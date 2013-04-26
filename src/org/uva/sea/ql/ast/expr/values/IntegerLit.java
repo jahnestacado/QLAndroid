@@ -6,17 +6,19 @@ import org.uva.sea.ql.ast.types.IntType;
 import org.uva.sea.ql.ast.types.Type;
 import org.uva.sea.ql.visitor.IExprVisitor;
 
+@SuppressWarnings("serial")
 public class IntegerLit extends Value {
 	private final int value;
+
 	public IntegerLit(int value) {
-		this.value=value;
+		this.value = value;
 
 	}
 
 	public int getValue() {
 		return value;
 	}
-	
+
 	@Override
 	public <T> T accept(IExprVisitor<T> nodeVisitor) {
 		return nodeVisitor.visit(this);

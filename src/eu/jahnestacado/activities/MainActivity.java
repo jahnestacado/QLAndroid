@@ -25,7 +25,7 @@ import com.example.qlandroid.R;
 public class MainActivity extends Activity implements OnClickListener {
 	private Button runButton;
 	private EditText editor;
-	private static Form form;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +50,14 @@ public class MainActivity extends Activity implements OnClickListener {
 		if (sourceCode.length() == 0)
 			return;
 		Form parsedForm = getParsedForm(sourceCode);
-		form = parsedForm;
+		Form form = parsedForm;
 		// Should catch exception for parse Error*****
-		ElementChecker checker = new ElementChecker(
-				new LinkedHashMap<String, Type>(), new ArrayList<QLErrorMsg>());
+		ElementChecker checker = new ElementChecker(new LinkedHashMap<String, Type>(), new ArrayList<QLErrorMsg>());
+		
 		if (checker.check(parsedForm)) {
-			startActivity(new Intent(
-					"com.example.qlandroid.QuestionaireActivity"));
+			Intent i = new Intent(this, QuestionaireActivity.class);
+			i.putExtra("FORM", form);
+			startActivity(i);
 		} else {
 			Toast.makeText(getApplicationContext(), "FAILED",
 					Toast.LENGTH_LONG).show();
@@ -85,9 +86,6 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	}
 
-	// Must use parcel
-	public static Form getForm() {
-		return form;
-	}
+	
 
 }

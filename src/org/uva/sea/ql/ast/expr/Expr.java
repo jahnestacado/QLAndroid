@@ -7,6 +7,7 @@ import org.uva.sea.ql.ast.ASTNode;
 import org.uva.sea.ql.ast.types.Type;
 
 
+@SuppressWarnings("serial")
 public abstract class Expr extends ASTNode implements VisitableExpr{
 	 public abstract Type getExprType(Map<String, Type> typeEnv);
 

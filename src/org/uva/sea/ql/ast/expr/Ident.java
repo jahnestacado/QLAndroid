@@ -6,6 +6,7 @@ import org.uva.sea.ql.ast.types.Type;
 import org.uva.sea.ql.ast.types.UndefinedType;
 import org.uva.sea.ql.visitor.IExprVisitor;
 
+@SuppressWarnings("serial")
 public class Ident extends Expr {
 
 	private final String name;

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.uva.sea.ql.visitor.IElementVisitor;
 
+@SuppressWarnings("serial")
 public class Body extends QLProgram {
 
 	private final List<BodyElement> body = new ArrayList<BodyElement>();

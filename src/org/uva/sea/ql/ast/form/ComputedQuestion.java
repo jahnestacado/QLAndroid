@@ -6,6 +6,7 @@ import org.uva.sea.ql.ast.expr.values.StringLit;
 import org.uva.sea.ql.ast.types.Type;
 import org.uva.sea.ql.visitor.IElementVisitor;
 
+@SuppressWarnings("serial")
 public class ComputedQuestion extends Question {
 
 	private final Expr expr;

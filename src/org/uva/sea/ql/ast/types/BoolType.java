@@ -1,20 +1,16 @@
 package org.uva.sea.ql.ast.types;
 
-
+@SuppressWarnings("serial")
 public class BoolType extends Type {
-	
-		
 
-		
+	@Override
+	public boolean isCompatibleToType(Type type) {
+		return type.isCompatibleToBoolType();
+	}
 
-		@Override
-		public boolean isCompatibleToType(Type type) {
-			return type.isCompatibleToBoolType(); 
-		}
-		
-		@Override
-		public boolean isCompatibleToBoolType() {
-			return true;
-		}
+	@Override
+	public boolean isCompatibleToBoolType() {
+		return true;
+	}
 
 }

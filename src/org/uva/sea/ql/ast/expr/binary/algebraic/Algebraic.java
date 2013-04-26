@@ -3,6 +3,7 @@ package org.uva.sea.ql.ast.expr.binary.algebraic;
 import org.uva.sea.ql.ast.expr.Expr;
 import org.uva.sea.ql.ast.expr.binary.Binary;
 
+@SuppressWarnings("serial")
 public abstract class Algebraic extends Binary {
 	
 	protected Algebraic(Expr leftExpr,Expr rightExpr){

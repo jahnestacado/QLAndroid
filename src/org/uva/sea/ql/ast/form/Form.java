@@ -3,6 +3,8 @@ package org.uva.sea.ql.ast.form;
 import org.uva.sea.ql.ast.expr.Ident;
 import org.uva.sea.ql.visitor.IElementVisitor;
 
+
+@SuppressWarnings("serial")
 public class Form extends QLProgram{
 	private final Ident id;
 	private final Body body;

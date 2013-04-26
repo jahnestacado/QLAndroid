@@ -1,5 +1,6 @@
 package org.uva.sea.ql.ast.types;
 
+@SuppressWarnings("serial")
 public class StringType extends Type {
 
 	@Override

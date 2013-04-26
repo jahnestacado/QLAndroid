@@ -1,5 +1,6 @@
 package org.uva.sea.ql.ast.types;
 
+@SuppressWarnings("serial")
 public class UndefinedType extends Type {
 
 	@Override

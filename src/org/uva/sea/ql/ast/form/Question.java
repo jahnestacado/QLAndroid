@@ -5,6 +5,7 @@ import org.uva.sea.ql.ast.expr.values.StringLit;
 import org.uva.sea.ql.ast.types.Type;
 import org.uva.sea.ql.visitor.IElementVisitor;
 
+@SuppressWarnings("serial")
 public class Question extends SingleLineElement {
 
 	public Question(Ident id, StringLit label, Type type) {

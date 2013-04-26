@@ -7,6 +7,7 @@ import org.uva.sea.ql.ast.types.NumericType;
 import org.uva.sea.ql.ast.types.Type;
 import org.uva.sea.ql.visitor.IExprVisitor;
 
+@SuppressWarnings("serial")
 public class Mul extends Algebraic{
 
 	public Mul(Expr leftExpr, Expr rightExpr) {

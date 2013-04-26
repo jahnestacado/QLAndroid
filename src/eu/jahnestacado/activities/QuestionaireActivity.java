@@ -8,6 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.uva.sea.ql.ast.form.Form;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
 
 import android.app.Activity;
@@ -40,16 +41,15 @@ public class QuestionaireActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.questionnaire);
-
 		TableLayout table = (TableLayout) findViewById(R.id.TableLayout01);
 		VariableUpdater varUpdater = new VariableUpdater(
 				new LinkedHashMap<String, Value>());
 		List<IQLRow> questionRows = new ArrayList<IQLRow>();
 		Map<String, Value> declaredVar = new HashMap<String, Value>();
-
-		UIGenerator generator = new UIGenerator(questionRows, varUpdater,
-				declaredVar, this);
-		generator.generate(MainActivity.getForm());
+		UIGenerator generator = new UIGenerator(questionRows, varUpdater,declaredVar, this);
+		Intent i = getIntent();
+		Form form = (Form) i.getSerializableExtra("FORM");
+		generator.generate(form);
 		rows = generator.getQuestionRows();
 		formName = generator.getFormName();
 		for (IQLRow row : rows) {

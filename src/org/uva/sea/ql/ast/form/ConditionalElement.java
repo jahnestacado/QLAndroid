@@ -2,6 +2,7 @@ package org.uva.sea.ql.ast.form;
 
 import org.uva.sea.ql.ast.expr.Expr;
 
+@SuppressWarnings("serial")
 public abstract class ConditionalElement extends BodyElement{
 	private final Expr condition;
 	private final Body body;

@@ -8,6 +8,7 @@ import org.uva.sea.ql.ast.types.NumericType;
 import org.uva.sea.ql.ast.types.Type;
 import org.uva.sea.ql.visitor.IExprVisitor;
 
+@SuppressWarnings("serial")
 public class Add extends Bool {
 
 	public Add(Expr leftExpr, Expr rightExpr) {
