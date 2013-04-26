@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.example.qlandroid.R;
 
@@ -25,12 +24,8 @@ public class ViewPDFActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.viewpdfbutton);
 		btn = (ImageButton) findViewById(R.id.button1);
 		btn.setOnClickListener(this);
-		
 		Intent i = getIntent();
 		formName = i.getStringExtra("FILE_NAME");
-		
-		
-		  Toast.makeText(getApplicationContext(), formName, Toast.LENGTH_LONG).show();
 	}
 
 	@Override
