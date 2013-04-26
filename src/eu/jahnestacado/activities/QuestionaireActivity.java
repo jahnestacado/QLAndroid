@@ -12,10 +12,13 @@ import org.uva.sea.ql.ast.form.Form;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.Toast;
@@ -34,11 +37,11 @@ public class QuestionaireActivity extends Activity implements OnClickListener {
 	private Button btn;
 	private List<IQLRow> rows;
 	private String formName;
-	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
 		setContentView(R.layout.questionnaire);
 		TableLayout table = (TableLayout) findViewById(R.id.TableLayout01);
@@ -46,7 +49,8 @@ public class QuestionaireActivity extends Activity implements OnClickListener {
 				new LinkedHashMap<String, Value>());
 		List<IQLRow> questionRows = new ArrayList<IQLRow>();
 		Map<String, Value> declaredVar = new HashMap<String, Value>();
-		UIGenerator generator = new UIGenerator(questionRows, varUpdater,declaredVar, this);
+		UIGenerator generator = new UIGenerator(questionRows, varUpdater,
+				declaredVar, this);
 		Intent i = getIntent();
 		Form form = (Form) i.getSerializableExtra("FORM");
 		generator.generate(form);
@@ -62,33 +66,49 @@ public class QuestionaireActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		OutputState state = new OutputState(formName,rows);
-		try {
-			QLToPDF.generatePdf(state);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (DocumentException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		/*
-		File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/QL/"+formName+".pdf");
-		Intent intent = new Intent(Intent.ACTION_VIEW);
-		intent.setDataAndType(Uri.fromFile(file),"application/pdf");
-		intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-		startActivity(intent);
-		*/
-		
-		 Intent intent = new Intent(getApplicationContext(),ViewPDFActivity.class);
-	        intent.putExtra("FILE_NAME", formName);
-	        startActivity(intent);
-	        finish();
-		
-	    Toast.makeText(getApplicationContext(), "ok", Toast.LENGTH_LONG).show();
+		OutputState state = new OutputState(formName, rows);
+		new AsyncPDFCreation().execute(state);
 	}
 
-	
+	private class AsyncPDFCreation extends AsyncTask<OutputState, Void, Void> {
+
+		private ProgressDialog dialog;
+		
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			QuestionaireActivity.this.setProgressBarIndeterminateVisibility(true);
+			dialog = ProgressDialog.show(QuestionaireActivity.this, "In progress", "Generating Pdf");
+		}
+
+		@Override
+		protected Void doInBackground(OutputState... arg0) {
+			OutputState state = arg0[0];
+			try {
+				QLToPDF.generatePdf(state);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} catch (DocumentException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			QuestionaireActivity.this.setProgressBarIndeterminateVisibility(true);
+			dialog.dismiss();
+			Intent intent = new Intent(getApplicationContext(),ViewPDFActivity.class);
+			intent.putExtra("FILE_NAME", formName);
+			startActivity(intent);
+			finish();
+			Toast.makeText(getApplicationContext(),"Pdf successfully created!", Toast.LENGTH_LONG).show();
+
+		}
+
+	}
 
 }

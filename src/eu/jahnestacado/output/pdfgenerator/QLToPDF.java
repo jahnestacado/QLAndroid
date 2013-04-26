@@ -68,9 +68,9 @@ public class QLToPDF {
 		Document document = new Document();
 		PdfWriter.getInstance(document, new FileOutputStream(path));
 		document.open();
-	
+		Image img;
 		try {
-			Image img = Image.getInstance(imgPath);
+			img = Image.getInstance(imgPath);
 			document.add(setHeaderLogo(img));
 			document.add(setTitle(formName));
 		} catch (BadElementException e) {
@@ -137,6 +137,10 @@ public class QLToPDF {
 		}
 		return paragraph;
 
+	}
+	
+	public static String getDir(){
+		return DIR;
 	}
 
 }
