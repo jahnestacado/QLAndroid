@@ -20,8 +20,8 @@ import android.widget.TableLayout;
 public class IfThenBody extends TableLayout implements Observer, IQLRow, ConditionalBodyRow{
 	
 	private List<IQLRow> rows;
-	private  Map<String,Value> runTimeValues;
-	private  VariableUpdater varUpdater;
+	private Map<String, Value> runTimeValues;
+	private VariableUpdater varUpdater;
 	Expr condition;
 	
 

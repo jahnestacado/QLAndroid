@@ -1,5 +1,7 @@
 package eu.jahnestacado.activities;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -18,20 +20,19 @@ import android.widget.TableLayout;
 import android.widget.Toast;
 
 import com.example.qlandroid.R;
+import com.itextpdf.text.DocumentException;
 
 import eu.jahnestacado.interpreter.UIGenerator;
 import eu.jahnestacado.interpreter.rows.IQLRow;
-import eu.jahnestacado.outputstate.ConditionalBodyRow;
-import eu.jahnestacado.outputstate.SingleRow;
+import eu.jahnestacado.outputstate.OutputState;
+import eu.jahnestacado.outputstate.QLToPDF;
 
 public class QuestionaireActivity extends Activity implements OnClickListener {
-	/** Called when the activity is first created. */
 
-	// initialize a button and a counter
-	Button btn;
-	int counter = 0;
-	List<IQLRow> rows;
-	List<String> ls = new ArrayList<String>();
+	private Button btn;
+	private List<IQLRow> rows;
+	private String formName;
+	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class QuestionaireActivity extends Activity implements OnClickListener {
 				declaredVar, this);
 		generator.generate(MainActivity.getForm());
 		rows = generator.getQuestionRows();
-
+		formName = generator.getFormName();
 		for (IQLRow row : rows) {
 			table.addView(row.getElement());
 		}
@@ -60,26 +61,19 @@ public class QuestionaireActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-        ls = new ArrayList<String>();
-		fill(rows);
-		String tt = "";
-		for (String s : ls) {
-			tt += s + '\n';
+		OutputState state = new OutputState(formName,rows);
+		try {
+			QLToPDF.generatePdf(state);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		Toast.makeText(getApplicationContext(), tt, Toast.LENGTH_LONG).show();
+		Toast.makeText(getApplicationContext(), "ok", Toast.LENGTH_LONG).show();
 	}
 
-	private void fill(List<IQLRow> rows) {
-		for (IQLRow row : rows) {
-			if (row.isRow()) {
-				ls.add(((SingleRow) row).getValue());
-			} else {
-				ConditionalBodyRow body = (ConditionalBodyRow) row;
-				if (body.isBodyVisible()) {
-					fill(body.getRows());
-				}
-			}
-		}
-	}
+	
 
 }

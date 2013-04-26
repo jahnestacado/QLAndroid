@@ -35,6 +35,7 @@ public class UIGenerator implements IElementVisitor{
 	private final VariableUpdater varUpdater;
 	private final Map<String,Value> runTimeValues;
 	private final Context context;
+	private String formName;
 	
 	public UIGenerator(List<IQLRow> questionRows, VariableUpdater varUpdater, Map<String,Value> runTimeValues, Context context ){
 		this.questionRows=questionRows;
@@ -45,8 +46,7 @@ public class UIGenerator implements IElementVisitor{
 	
 	
 	public void generate(Form form) {
-		String formName=form.getId().getName();
-		//frame.setTitle(formName);
+		formName=form.getId().getName();
 		form.accept(this);
 	}
 	
@@ -162,5 +162,9 @@ public class UIGenerator implements IElementVisitor{
 			rows[i] = questionRows.get(i);
 		}
 		return rows;
+	}
+	
+	public String getFormName(){
+		return formName;
 	}
 }
