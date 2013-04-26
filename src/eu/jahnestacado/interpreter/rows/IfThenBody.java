@@ -11,7 +11,7 @@ import org.uva.sea.ql.visitor.evaluator.ExprEvaluator;
 import org.uva.sea.ql.visitor.evaluator.values.BoolValue;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
 
-import eu.jahnestacado.outputstate.ConditionalBodyRow;
+import eu.jahnestacado.interpreter.ConditionalBodyRow;
 
 import android.content.Context;
 import android.view.View;

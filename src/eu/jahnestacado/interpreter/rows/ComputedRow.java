@@ -12,7 +12,7 @@ import org.uva.sea.ql.visitor.evaluator.ExprEvaluator;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
 
 import eu.jahnestacado.interpreter.RowMargin;
-import eu.jahnestacado.outputstate.SingleRow;
+import eu.jahnestacado.interpreter.SingleRow;
 
 import android.content.Context;
 import android.view.Gravity;

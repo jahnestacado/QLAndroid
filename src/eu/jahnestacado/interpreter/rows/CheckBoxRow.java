@@ -7,7 +7,7 @@ import org.uva.sea.ql.gui.qlform.interpreter.VariableUpdater;
 import org.uva.sea.ql.visitor.evaluator.values.BoolValue;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
 
-import eu.jahnestacado.outputstate.SingleRow;
+import eu.jahnestacado.interpreter.SingleRow;
 
 
 import android.content.Context;

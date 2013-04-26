@@ -12,6 +12,7 @@ import org.uva.sea.ql.gui.qlform.interpreter.VariableUpdater;
 import org.uva.sea.ql.visitor.evaluator.values.Value;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,8 +25,8 @@ import com.itextpdf.text.DocumentException;
 
 import eu.jahnestacado.interpreter.UIGenerator;
 import eu.jahnestacado.interpreter.rows.IQLRow;
-import eu.jahnestacado.outputstate.OutputState;
-import eu.jahnestacado.outputstate.QLToPDF;
+import eu.jahnestacado.output.pdfgenerator.OutputState;
+import eu.jahnestacado.output.pdfgenerator.QLToPDF;
 
 public class QuestionaireActivity extends Activity implements OnClickListener {
 
@@ -54,7 +55,7 @@ public class QuestionaireActivity extends Activity implements OnClickListener {
 		for (IQLRow row : rows) {
 			table.addView(row.getElement());
 		}
-		Button btn = (Button) findViewById(R.id.button1);
+		btn = (Button) findViewById(R.id.button1);
 		btn.setOnClickListener(this);
 
 	}
@@ -71,7 +72,21 @@ public class QuestionaireActivity extends Activity implements OnClickListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		Toast.makeText(getApplicationContext(), "ok", Toast.LENGTH_LONG).show();
+		
+		/*
+		File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/QL/"+formName+".pdf");
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setDataAndType(Uri.fromFile(file),"application/pdf");
+		intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+		startActivity(intent);
+		*/
+		
+		 Intent intent = new Intent(getApplicationContext(),ViewPDFActivity.class);
+	        intent.putExtra("FILE_NAME", formName);
+	        startActivity(intent);
+	        finish();
+		
+	    Toast.makeText(getApplicationContext(), "ok", Toast.LENGTH_LONG).show();
 	}
 
 	

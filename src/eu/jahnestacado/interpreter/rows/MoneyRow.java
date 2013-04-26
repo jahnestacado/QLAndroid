@@ -9,7 +9,7 @@ import org.uva.sea.ql.visitor.evaluator.values.Value;
 
 import eu.jahnestacado.interpreter.InputValidator;
 import eu.jahnestacado.interpreter.RowMargin;
-import eu.jahnestacado.outputstate.SingleRow;
+import eu.jahnestacado.interpreter.SingleRow;
 
 import android.content.Context;
 import android.text.Editable;
