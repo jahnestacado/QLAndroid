@@ -16,9 +16,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -31,6 +28,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	private Button runButton;
 	private EditText editor;
 	private TextView console;
+	private Button clean;
+	private Button sampleCode;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +37,11 @@ public class MainActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_main);
 		runButton = (Button) findViewById(R.id.button1);
 		runButton.setOnClickListener(this);
-
+		clean = (Button) findViewById(R.id.clean);
+		clean.setOnClickListener(new Clean());
+		sampleCode = (Button) findViewById(R.id.sample);
+		sampleCode.setOnClickListener(new SampleCode());
 		editor = (EditText) findViewById(R.id.editor);
-		editor.setText("form Android{ " + "qb: \"result input\" boolean  "
-				+ '\n' + "if(qb){ q2: \"result input\" boolean  " + '\n'
-				+ "q3: \"result input\" int " + '\n' + "  }"
-				+ "else{q8: \"elsehh\" boolean (q2) "
-				+ "q543: \"result input\" int } "
-				+ "q8j: \"result input\" money  " + "}");
-
 		console = (TextView) findViewById(R.id.console);
 		console.setMovementMethod(ScrollingMovementMethod.getInstance());
 		EditText lineCounter = (EditText) findViewById(R.id.linecounter);
@@ -64,7 +59,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		if (sourceCode.length() == 0)
 			return;
 		Form parsedForm = getParsedForm(sourceCode);
-		if (parsedForm == null)
+		String currentConsoleDisplay = console.getText().toString();
+		if (!currentConsoleDisplay.equals(""))
 			return;
 		ElementChecker checker = new ElementChecker(
 				new LinkedHashMap<String, Type>(), new ArrayList<QLErrorMsg>());
@@ -112,16 +108,23 @@ public class MainActivity extends Activity implements OnClickListener {
 		console.setText(displayedErrors);
 	}
 	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater menuInflater = getMenuInflater();
-		menuInflater.inflate(R.menu.menu, menu);
-		return true;
-	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		editor.setText("Sample Code gia olous");
-		return true;
+	
+	private class Clean implements OnClickListener {
+		@Override
+		public void onClick(View arg0) {
+			editor.setText("");
+		}
+
+	}
+	
+	public class SampleCode implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			String sampleCode = getString(R.string.sample_code);
+			editor.setText(sampleCode);
+		}
+
 	}
 }

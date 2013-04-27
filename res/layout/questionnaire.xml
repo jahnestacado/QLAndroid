@@ -1,27 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
+    android:background="#404040"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+  
+
     <ScrollView
         android:id="@+id/ScrollView01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/button1"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true" >
 
+    
         <TableLayout
             android:id="@+id/TableLayout01"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="#404040"
             android:stretchColumns="0" >
-            
         </TableLayout>
+        
+        
+         
     </ScrollView>
-
-    <Button
+    
+      <Button
         android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/genbutton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:textSize="17dp"
+        android:textColor="#ffffff"
+        android:text="Generate" />
 
-</LinearLayout>
+</RelativeLayout>

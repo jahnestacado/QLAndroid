@@ -11,18 +11,15 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import eu.jahnestacado.interpreter.InputValidator;
 import eu.jahnestacado.interpreter.RowMargin;
 import eu.jahnestacado.interpreter.SingleRow;
 import eu.jahnestacado.interpreter.VariableUpdater;
 
 public class IntegerRow extends Row implements OnClickListener, TextWatcher, SingleRow{
-	private final TextView label;
-	private final EditText input;
-	private final Button button;
+	private final QLLabel label;
+	private final QLEditText input;
+	private final QLButton button;
 	private String varName;
 	private Map<String,Value> runTimeValues;
 	private VariableUpdater varUpdater;
@@ -30,19 +27,19 @@ public class IntegerRow extends Row implements OnClickListener, TextWatcher, Sin
 
 	public IntegerRow(Context context) {
 		super(context);
-		label = new TextView(context);
-		input = new EditText(context);
-		button = new Button(context);
+		label = new QLLabel(context);
+		input = new QLEditText(context);
+		button = new QLButton(context);		
 		button.setOnClickListener(this);
-		button.setText("OK");
 		input.addTextChangedListener(this);
-		//this.setBackgroundResource(R.layout.line);
 		this.setLayoutParams(RowMargin.getMargin());
 	}
 	
 	@Override
 	public void setSettings(Question qlElement,Map<String, Value> runTimeValues, VariableUpdater varUpdater) {
-		label.setText(qlElement.getLabel().getValue());
+		String question = qlElement.getLabel().getValue();
+		question = question.substring(1, question.length() - 1);
+		label.setText(question);
 		varName = qlElement.getId().getName();
 		this.runTimeValues= runTimeValues;
 		this.varUpdater = varUpdater;

@@ -16,7 +16,7 @@ import eu.jahnestacado.interpreter.SingleRow;
 import eu.jahnestacado.interpreter.VariableUpdater;
 
 public class CheckBoxRow extends Row implements OnCheckedChangeListener, SingleRow {
-	private final TextView label;
+	private final QLLabel label;
 	private final TextView dummyView;
 	private final CheckBox checkbox;
 	private String varName;
@@ -25,7 +25,7 @@ public class CheckBoxRow extends Row implements OnCheckedChangeListener, SingleR
 
 	public CheckBoxRow(Context context) {
 		super(context);
-		label = new TextView(context);
+		label = new QLLabel(context);
 		checkbox = new CheckBox(context);
 		dummyView = new TextView(context);
 		dummyView.setVisibility(INVISIBLE);
@@ -33,7 +33,9 @@ public class CheckBoxRow extends Row implements OnCheckedChangeListener, SingleR
 
 	@Override
 	public void setSettings(Question qlElement,Map<String, Value> runTimeValues, VariableUpdater varUpdater) {
-		label.setText(qlElement.getLabel().getValue());
+		String question = qlElement.getLabel().getValue();
+		question = question.substring(1, question.length() - 1);
+		label.setText(question);
 		varName = qlElement.getId().getName();
 		this.runTimeValues= runTimeValues;
 		this.varUpdater = varUpdater;

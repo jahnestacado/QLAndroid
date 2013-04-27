@@ -4,5 +4,17 @@
     <string name="app_name">QLAndroid</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="sample_code">
+      form Box1HouseOwning {\n
+ 	  \t hasSoldHouse : \"Did you sell a house in 2010?\" boolean\n
+ 	  \t hasBoughtHouse : \"Did you by a house in 2010?\" boolean\n
+	  \t hasMaintLoan : \"Did you enter a loan for maintenance/reconstruction?\" boolean\n
+ 	  \t if (hasSoldHouse) {\n
+      \t\t  privateDebt : \"Private debts for the sold house:\" money\n
+      \t\t  sellingPrice : \"Price the house was sold for:\" money\n
+      \t\t  valueResidue: \"Value residue:\" money (sellingPrice - privateDebt)\n
+  	  \t}\n
+	  }
+</string>
 
 </resources>

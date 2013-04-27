@@ -21,7 +21,7 @@ import eu.jahnestacado.interpreter.VariableUpdater;
 
 public class ComputedRow extends Row implements Observer, SingleRow{
 
-	private final TextView label;
+	private final QLLabel label;
 	private final TextView dummyView;
 	private final EditText input;
 	private Expr expr;
@@ -30,11 +30,10 @@ public class ComputedRow extends Row implements Observer, SingleRow{
 	
 	public ComputedRow(Context context) {
 		super(context);
-		label = new TextView(context);
+		label = new QLLabel(context);
 		input = new EditText(context);
 		dummyView = new TextView(context);
 		dummyView.setVisibility(INVISIBLE);
-		//this.setBackgroundResource(R.layout.line);
 		this.setLayoutParams(RowMargin.getMargin());
 		input.setEnabled(false);
 		input.setGravity(Gravity.CENTER);
@@ -57,15 +56,13 @@ public class ComputedRow extends Row implements Observer, SingleRow{
 		expr = question.getExpr();
 		Value initValue = ExprEvaluator.eval(expr, runTimeValues);
 		input.setText(String.valueOf(initValue.getValue()));
-		label.setText(qlElement.getLabel().getValue());
+		String questionText = qlElement.getLabel().getValue();
+		questionText = questionText.substring(1, questionText.length() - 1);
+		label.setText(questionText);
 		varName = qlElement.getId().getName();
 		this.varUpdater = varUpdater;
 		varUpdater.addObserver(this);
 		input.setMinimumWidth(60);
-		
-		
-			
-
 		this.addView(label);
 		this.addView(input);
 		this.addView(dummyView);
