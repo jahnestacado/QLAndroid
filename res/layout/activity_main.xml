@@ -4,42 +4,73 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
-    <EditText
-        android:id="@+id/editor"
-        android:layout_width="fill_parent"
-        android:layout_height="240dp"
-        android:layout_alignParentTop="true"
-        android:ems="10"
-        android:gravity="top|left"
-        android:lines="8"
-        android:maxLines="10"
-        android:minLines="6"
-        android:scrollbars="vertical"
-        android:singleLine="false" >
-
-        <requestFocus />
-    </EditText>
-
     <Button
         android:id="@+id/button1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editor"
+        android:layout_below="@+id/scrollView1"
         android:layout_centerHorizontal="true"
         android:text="Button" />
 
-    <TextView
-        android:id="@+id/console"
+    <RelativeLayout
+        android:id="@+id/rel"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignRight="@+id/button1"
         android:layout_below="@+id/button1"
-        android:background="#000000"
-        android:ems="10"
-        android:maxLines="3"
-        android:scrollbars="vertical"
-        android:singleLine="false"
-        android:textColor="@android:color/secondary_text_dark_nodisable" >
-    </TextView>
+        android:background="#FDD017" >
+
+        <TextView
+            android:id="@+id/console"
+            android:layout_width="300dp"
+            android:layout_height="180dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shape"
+            android:ems="10"
+            android:maxLines="10"
+            android:scrollbars="vertical"
+            android:singleLine="false" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:background="#000000" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/linecounter"
+                android:layout_width="49dp"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:background="#696565"
+                android:editable="false"
+                android:focusable="false"
+                android:textColor="#F62217"
+                android:textSize="17dp" />
+
+            <EditText
+                android:id="@+id/editor"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/linecounter"
+                android:background="#00000000"
+                android:ems="10"
+                android:gravity="top|left"
+                android:maxLines="99"
+                android:minLines="99"
+                android:singleLine="false"
+                android:textColor="#FDD017"
+                android:textSize="17dp" >
+            </EditText>
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

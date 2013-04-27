@@ -49,7 +49,12 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		console = (TextView) findViewById(R.id.console);
 		console.setMovementMethod(ScrollingMovementMethod.getInstance());
-		
+		EditText lineCounter = (EditText) findViewById(R.id.linecounter);
+		String lines = new String();
+		for (int i = 1; i <= 100; i++) {
+			lines += i + "." + '\n';
+		}
+		lineCounter.setText(lines);
 	}
 
 	@Override
