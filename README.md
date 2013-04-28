@@ -3,9 +3,9 @@
 
 A DSL for auto-generated interactive questionnaire sheets. Questionnaires are characterized by conditional entry fields
 and (spreadsheet-like) dependency-directed computation. It reads from a text file the content(source code), conducting
-lexical and syntactic analysis, and auto-generates interactive java SWING forms. The application allows the user to 
-export in PDF or JSON format the results of the filled form. ANTLR java parser and the java programming languages is 
-used for the implementation of this project.
+lexical and syntactic analysis, and auto-generates interactive Android UI Views. The application allows the user to 
+export in PDF format the results of the filled form and view them via the default PDF Viewer app of the smartphone 
+device. ANTLR java parser and the java programming languages is used for the implementation of this project.
 
 
 ##Example
