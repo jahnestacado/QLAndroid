@@ -29,6 +29,7 @@ public class MoneyRow extends Row implements OnClickListener, TextWatcher, Singl
 		super(context);
 		label = new QLLabel(context);
 		input = new QLEditText(context);
+		input.setNumInputType();
 		button = new QLButton(context);
 		button.setOnClickListener(this);
 		input.addTextChangedListener(this);

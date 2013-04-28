@@ -12,7 +12,7 @@ public class QLLabel extends TextView {
 	}
 
 	private void setPreferences() {
-		this.setTextColor(Color.WHITE);	
+		this.setTextColor(Color.WHITE);
 		this.setWidth(70);
 		this.setSingleLine(false);
 	}

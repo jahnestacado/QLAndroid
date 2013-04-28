@@ -29,6 +29,7 @@ public class IntegerRow extends Row implements OnClickListener, TextWatcher, Sin
 		super(context);
 		label = new QLLabel(context);
 		input = new QLEditText(context);
+		input.setNumInputType();
 		button = new QLButton(context);		
 		button.setOnClickListener(this);
 		input.addTextChangedListener(this);
@@ -41,6 +42,7 @@ public class IntegerRow extends Row implements OnClickListener, TextWatcher, Sin
 		question = question.substring(1, question.length() - 1);
 		label.setText(question);
 		varName = qlElement.getId().getName();
+		input.setText(String.valueOf(runTimeValues.get(varName).getValue()));
 		this.runTimeValues= runTimeValues;
 		this.varUpdater = varUpdater;
 		this.addView(label);

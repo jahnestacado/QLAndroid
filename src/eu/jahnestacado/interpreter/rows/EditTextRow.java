@@ -31,9 +31,9 @@ public class EditTextRow extends Row implements OnClickListener, TextWatcher {
 		super(context);
 		label = new QLLabel(context);
 		input = new QLEditText(context);
+		input.setStrInputType();
 		button = new QLButton(context);
 		button.setOnClickListener(this);
-		button.setText("OK");
 		input.addTextChangedListener(this);
 		this.setBackgroundResource(R.layout.line);
 		this.setLayoutParams(RowMargin.getMargin());

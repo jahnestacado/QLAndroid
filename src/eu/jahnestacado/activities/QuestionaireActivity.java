@@ -78,7 +78,7 @@ public class QuestionaireActivity extends Activity implements OnClickListener {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			QuestionaireActivity.this.setProgressBarIndeterminateVisibility(true);
-			dialog = ProgressDialog.show(QuestionaireActivity.this, "In progress", "Generating Pdf");
+			dialog = ProgressDialog.show(QuestionaireActivity.this, "In progress...", "Generating Pdf");
 		}
 
 		@Override

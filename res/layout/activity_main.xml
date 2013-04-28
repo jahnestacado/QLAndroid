@@ -61,7 +61,7 @@
                 android:minLines="99"
                 android:singleLine="false"
                 android:textColor="#FDD017"
-                android:textSize="17dp" >
+                android:textSize="17sp" >
             </EditText>
         </RelativeLayout>
     </ScrollView>
