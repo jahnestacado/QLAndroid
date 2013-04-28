@@ -23,7 +23,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
-import com.example.qlandroid.R;
+import eu.jahnestacado.R;
 import com.itextpdf.text.DocumentException;
 
 import eu.jahnestacado.interpreter.UIGenerator;

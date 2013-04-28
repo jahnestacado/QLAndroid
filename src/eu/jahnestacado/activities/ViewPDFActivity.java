@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
-import com.example.qlandroid.R;
+import eu.jahnestacado.R;
 
 import eu.jahnestacado.output.pdfgenerator.QLToPDF;
 

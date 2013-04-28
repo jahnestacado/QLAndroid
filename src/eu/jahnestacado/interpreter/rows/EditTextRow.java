@@ -12,7 +12,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.example.qlandroid.R;
+import eu.jahnestacado.R;
 
 import eu.jahnestacado.interpreter.InputValidator;
 import eu.jahnestacado.interpreter.RowMargin;

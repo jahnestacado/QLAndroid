@@ -22,7 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.qlandroid.R;
+import eu.jahnestacado.R;
 
 public class MainActivity extends Activity implements OnClickListener {
 	private Button runButton;

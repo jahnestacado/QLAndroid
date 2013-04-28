@@ -1,18 +1,13 @@
-// $ANTLR 3.4 /home/jahn/workspace1/QLAndroid/src/org/uva/sea/ql/parser/antlr/QL.g 2013-04-27 22:19:23
+// $ANTLR 3.4 /home/jahn/workspace1/QLAndroid/src/org/uva/sea/ql/parser/antlr/QL.g 2013-04-29 00:09:17
 
 package org.uva.sea.ql.parser.antlr;
 
 
 
-import org.antlr.runtime.BaseRecognizer;
-import org.antlr.runtime.CharStream;
-import org.antlr.runtime.DFA;
-import org.antlr.runtime.EarlyExitException;
-import org.antlr.runtime.Lexer;
-import org.antlr.runtime.MismatchedSetException;
-import org.antlr.runtime.NoViableAltException;
-import org.antlr.runtime.RecognitionException;
-import org.antlr.runtime.RecognizerSharedState;
+import org.antlr.runtime.*;
+import java.util.Stack;
+import java.util.List;
+import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class QLLexer extends Lexer {
