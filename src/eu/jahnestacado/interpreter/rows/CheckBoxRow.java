@@ -12,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import eu.jahnestacado.interpreter.SingleRow;
 import eu.jahnestacado.interpreter.VariableUpdater;
 
 public class CheckBoxRow extends Row implements OnCheckedChangeListener, SingleRow {

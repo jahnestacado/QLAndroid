@@ -15,8 +15,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import eu.jahnestacado.interpreter.RowMargin;
-import eu.jahnestacado.interpreter.SingleRow;
 import eu.jahnestacado.interpreter.VariableUpdater;
 
 public class ComputedRow extends Row implements Observer, SingleRow{

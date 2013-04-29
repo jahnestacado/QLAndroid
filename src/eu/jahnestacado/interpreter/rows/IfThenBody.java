@@ -13,7 +13,6 @@ import org.uva.sea.ql.visitor.evaluator.values.Value;
 import android.content.Context;
 import android.view.View;
 import android.widget.TableLayout;
-import eu.jahnestacado.interpreter.ConditionalBodyRow;
 import eu.jahnestacado.interpreter.VariableUpdater;
 
 public class IfThenBody extends TableLayout implements Observer, IQLRow, ConditionalBodyRow{

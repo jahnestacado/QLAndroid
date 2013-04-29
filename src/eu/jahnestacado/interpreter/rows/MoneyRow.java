@@ -12,8 +12,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import eu.jahnestacado.interpreter.InputValidator;
-import eu.jahnestacado.interpreter.RowMargin;
-import eu.jahnestacado.interpreter.SingleRow;
 import eu.jahnestacado.interpreter.VariableUpdater;
 
 public class MoneyRow extends Row implements OnClickListener, TextWatcher, SingleRow{

@@ -4,9 +4,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import eu.jahnestacado.interpreter.ConditionalBodyRow;
-import eu.jahnestacado.interpreter.SingleRow;
+import eu.jahnestacado.interpreter.rows.ConditionalBodyRow;
 import eu.jahnestacado.interpreter.rows.IQLRow;
+import eu.jahnestacado.interpreter.rows.SingleRow;
 
 public class OutputState {
 	private final Map<String,String> content;

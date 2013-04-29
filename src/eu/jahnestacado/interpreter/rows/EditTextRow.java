@@ -15,7 +15,6 @@ import android.view.View.OnClickListener;
 import eu.jahnestacado.R;
 
 import eu.jahnestacado.interpreter.InputValidator;
-import eu.jahnestacado.interpreter.RowMargin;
 import eu.jahnestacado.interpreter.VariableUpdater;
 
 public class EditTextRow extends Row implements OnClickListener, TextWatcher {
