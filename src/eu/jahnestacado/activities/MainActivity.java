@@ -7,7 +7,7 @@ import java.util.List;
 import org.uva.sea.ql.ast.form.Form;
 import org.uva.sea.ql.ast.types.Type;
 import org.uva.sea.ql.parser.antlr.ANTLRParser;
-import org.uva.sea.ql.parser.test.ParseError;
+import org.uva.sea.ql.parser.error.ParseError;
 import org.uva.sea.ql.visitor.checkers.ElementChecker;
 import org.uva.sea.ql.visitor.checkers.error.QLErrorMsg;
 

@@ -12,8 +12,8 @@ import org.uva.sea.ql.ast.form.ConditionalElement;
 import org.uva.sea.ql.ast.form.Form;
 import org.uva.sea.ql.ast.form.Question;
 import org.uva.sea.ql.ast.types.Type;
-import org.uva.sea.ql.parser.test.IParse;
-import org.uva.sea.ql.parser.test.ParseError;
+import org.uva.sea.ql.parser.error.IParse;
+import org.uva.sea.ql.parser.error.ParseError;
 
 
 public class ANTLRParser implements IParse {
